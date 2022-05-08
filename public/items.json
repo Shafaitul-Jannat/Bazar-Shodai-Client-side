@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Fruits",
+        "quantity": "500gm",
+        "price": "300 bdt",
+        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "img": "https://img.freepik.com/free-photo/fresh-fruits-isolated-white-background_144627-10547.jpg?t=st=1651315474~exp=1651316074~hmac=d0250f0f5c2492ba20679dad7b68b34f64fa28214fafb1b4a7fe504bfca6641e&w=900"
+    },
+    {
+        "id": 2,
+        "name": "Fish",
+        "quantity": "500gm",
+        "price": "100 bdt",
+        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "img": "https://img.freepik.com/free-photo/close-up-view-fresh-raw-fishes-brown-wooden-cutting-board-dark-mix-colors-table-with-free-space_179666-18172.jpg?size=626&ext=jpg&uid=R70044993&ga=GA1.2.1433669062.1642975755"
+    },
+    {
+        "id": 3,
+        "name": "Red Tomatoes",
+        "quantity": "500gm",
+        "price": "150 bdt",
+        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "img": "https://img.freepik.com/free-photo/tomatoes_144627-15413.jpg?size=626&ext=jpg&uid=R70044993&ga=GA1.2.1433669062.1642975755"
+    },
+    {
+        "id": 4,
+        "name": "Yogurt",
+        "quantity": "500gm",
+        "price": "180 bdt",
+        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "img": "https://img.freepik.com/free-photo/avocado-avocado-yogurt-products-made-from-avocado-food-nutrition-concept_1150-26288.jpg?size=626&ext=jpg&uid=R70044993&ga=GA1.2.1433669062.1642975755"
+    },
+    {
+        "id": 5,
+        "name": "Capsicums",
+        "quantity": "500gm",
+        "price": "100 bdt",
+        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa.",
+        "img": "https://img.freepik.com/free-photo/pack-four-colorful-peppers_1203-1842.jpg?t=st=1651317438~exp=1651318038~hmac=f950ca3b7e1914f62afe90c2a198f4e7d9a879ee813be835be0f87dfd8028d7d&w=900"
+    },
+    {
+        "id": 6,
+        "name": "Chicken",
+        "quantity": "500gm",
+        "price": "300",
+        "description": "Lorem ipsum dolor sit amet, consectetu radipisi cing elitBeatae autem aperiam nequ quaera molestias voluptatibus harum ametipsa",
+        "img": "https://img.freepik.com/free-photo/raw-uncooked-chicken-legs-dark-surface_1150-43931.jpg?t=st=1651317507~exp=1651318107~hmac=f02203e3eb136ddb6023b7c4d4d7d9714393af5575bc770f382fc3539ee66a85&w=900"
+    }
+]
