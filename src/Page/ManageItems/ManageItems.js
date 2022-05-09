@@ -9,7 +9,7 @@ const ManageItems = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure, you want to delete this item?");
         if (proceed) {
-            const url = `https://thawing-mountain-91486.herokuapp.com/service/${id}`;
+            const url = `http://localhost:5000/item/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
