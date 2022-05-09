@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Item from '../Item/Item';
+import './items.css'
 
 const Items = () => {
     const [items, setItems] = useState([]);
 
+
     useEffect(() => {
-        fetch('items.json')
+        fetch('http://localhost:5000/item')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [])
+
+    const item = items.slice(0, 6);
     return (
         <div id='items' className='container'>
             < div className='text-success text-center p-5' >
@@ -17,13 +21,12 @@ const Items = () => {
             <div className='row'>
 
                 {
-                    items.map(item =>
+                    item.map(item =>
                         <Item
-                            key={item.id}
+                            key={item._id}
                             item={item}>
                         </Item>)}
             </div>
-            <button>Delivered</button>
         </div >
     );
 };

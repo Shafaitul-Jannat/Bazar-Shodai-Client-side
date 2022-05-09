@@ -1,13 +1,13 @@
 import React from 'react';
-import Items from '../HomePage/Items/Items';
+import { Link, useParams } from 'react-router-dom';
+
 
 
 const Inventory = () => {
-
-
+    const { itemId } = useParams();
     return (
         <div>
-            <Items></Items>
+
         </div>
 
     );
