@@ -35,11 +35,7 @@ const Blog = () => {
                 </div>
                 <div className="pb-5 pt-3">
                     <h2 className="text-start pb-3">Differences between sql and nosql databases</h2>
-                    <p className="text-start">
-                        SQL databases are primarily called RDBMS or relational databases and NoSQL databases are primarily referred to as non-relational or distributed databases. These databases have
-                        rigid schema such as Tables with fixed rows and columns whereas NoSQL have dynamic schema which is Flexible. SQL is Vertically scalable that means (scale-up with a larger
-                        server, on the other hand NoSQL is horizontally scalable. SQL databases are not suited for hierarchical data storage however, NoSQL is preferred for Graph or hierarchical data.
-                    </p>
+
                 </div>
             </div>
         </div>
