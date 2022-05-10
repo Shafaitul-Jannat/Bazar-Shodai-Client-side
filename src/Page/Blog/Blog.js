@@ -26,7 +26,12 @@ const Blog = () => {
 
                 <div className="pb-5 pt-3">
                     <h2 className="text-start pb-3">What is the purpose of jwt and how does it work?</h2>
-
+                    <p className="text-start">
+                        JSON Web Token is an open standard that allows two parties, a client and a server to share security information. This information is digitally signed so it can be verified and
+                        trusted. These tokens are sent on every HTTP request and allow the server to authenticate the user. To ensure integrity, the information contained in the token is signed with a
+                        private key owned by the server. When the server gets a token from the client, the server only needs to compare the signature sent by the client with the signature generated
+                        using the private key. If the signatures are the same, the token is valid.
+                    </p>
                 </div>
                 <div className="pb-5 pt-3">
                     <h2 className="text-start pb-3">Differences between sql and nosql databases</h2>
