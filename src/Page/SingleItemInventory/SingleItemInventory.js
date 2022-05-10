@@ -8,7 +8,7 @@ import useSingleInventory from '../Hooks/useSingleInventory';
 const SingleItemInventory = () => {
 
     const { inventoryId } = useParams();
-    const [item, setItems] = useSingleInventory(inventoryId);
+    const [item, setItem] = useSingleInventory(inventoryId);
 
 
     const [item_Quantity, setItem_Quantity] = useState();
@@ -21,7 +21,7 @@ const SingleItemInventory = () => {
             });
 
 
-            setItems(data);
+            setItem(data);
             setItem_Quantity(data.quantity);
         };
         getItem();
@@ -29,26 +29,28 @@ const SingleItemInventory = () => {
 
 
 
-    const updateItem = (item) => {
+    // 
+    const updateItem = (product) => {
         const setItem = async () => {
-            const { data } = await axios.post(`https://shrouded-dusk-35482.herokuapp.com/additem`, item, {
+            const { data } = await axios.post(`https://hasan-inventory.herokuapp.com/additem`, product, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 },
             });
 
             if (data.success) {
-                toast.success("item Updated");
+                toast.success("Item Updated");
             } else {
-                toast.error("Failed to update item");
+                toast.error("Failed to update Item");
             }
         };
         setItem();
     };
+
     const quantityUpdate = (updatedQuantity) => {
         const { quantity, ...rest } = item;
         const newItem = { quantity: updatedQuantity, ...rest };
-        setItems(newItem);
+        setItem(newItem);
     };
     const Ref = useRef();
 
@@ -82,7 +84,7 @@ const SingleItemInventory = () => {
                     <div>
                         <h4 className="text-start">Quantity:{item?.quantity}</h4>
                         <h4 className="text-start">Price: {item?.price}</h4>
-                        <h4 className="text-start">Supplier: {item?.supplier}</h4>
+                        <h4 className="text-start">Seller: {item?.seller}</h4>
                     </div>
                     <div className="text-start">
                         {item?.description}

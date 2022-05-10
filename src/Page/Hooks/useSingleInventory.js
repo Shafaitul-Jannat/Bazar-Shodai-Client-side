@@ -13,7 +13,7 @@ const useSingleInventory = inventoryId => {
             .then(data => setItems(data));
 
     }, [inventoryId]);
-    return [items]
+    return [items, setItems]
 }
 
 

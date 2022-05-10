@@ -25,7 +25,7 @@ const Header = () => {
                         <Navbar.Brand as={Link} to="/">
                             <img
                                 src={logo}
-                                width="100"
+                                width="150"
                                 height="100"
                                 className="img-nav d-inline-block align-top"
                                 alt=''
@@ -34,7 +34,7 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
+                        <Nav className="me-auto ">
                             <Nav.Link href="/home">Home</Nav.Link>
                             <Nav.Link href="/manage">Inventory</Nav.Link>
 
