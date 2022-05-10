@@ -7,14 +7,14 @@ const Items = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/item')
+        fetch('https://shrouded-dusk-35482.herokuapp.com/item')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [])
 
     const item = items.slice(0, 6);
     return (
-        <div id='items' className='container'>
+        <div id='items' className='container '>
             < div className='text-success text-center p-5' >
                 <h1>Inventory</h1>
             </div >

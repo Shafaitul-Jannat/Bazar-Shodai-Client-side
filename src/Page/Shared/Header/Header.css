@@ -1,0 +1,22 @@
+/* //make services responsive */
+@media only screen and (max-width:576px) {
+    .img-nav {
+        height: 80px;
+        width: 80px;
+        display: inline-block;
+        position: absolute;
+
+    }
+}
+
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .img-nav {
+        height: 80px;
+        width: 80px;
+        display: inline-block;
+        position: absolute;
+
+
+
+    }
+}

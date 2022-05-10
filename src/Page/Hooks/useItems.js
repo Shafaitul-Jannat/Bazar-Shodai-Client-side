@@ -5,7 +5,7 @@ const useItems = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/item')
+        fetch('https://shrouded-dusk-35482.herokuapp.com/item')
             .then(res => res.json())
             .then(data => setItems(data));
     }, [])

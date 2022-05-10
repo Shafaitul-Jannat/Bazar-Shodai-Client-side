@@ -7,7 +7,7 @@ const AddService = () => {
 
     const onSubmit = data => {
         console.log(data);
-        const url = `http://localhost:5000/item`;
+        const url = `https://shrouded-dusk-35482.herokuapp.com/item`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -32,7 +32,7 @@ const AddService = () => {
 
                 <input className="border py-1 px-3 mb-2 w-full" placeholder='Item Quantity' type="number" {...register("quantity")} />
 
-                <input className="border py-1 px-3 mb-2 w-full" placeholder='Supplier Name' {...register("name", { required: true, maxLength: 20 })} />
+                <input className="border py-1 px-3 mb-2 w-full" placeholder='Seller Name' {...register("text", { required: true, maxLength: 20 })} />
 
                 <textarea className="border py-1 px-3 mb-2 w-full" placeholder='Item Description' {...register("description")} />
 

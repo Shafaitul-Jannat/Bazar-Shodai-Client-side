@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import useItems from '../Hooks/useItems';
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ManageItems = () => {
     const [items, setItems] = useItems();
@@ -9,7 +10,7 @@ const ManageItems = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm("Are you sure, you want to delete this item?");
         if (proceed) {
-            const url = `http://localhost:5000/item/${id}`;
+            const url = `https://shrouded-dusk-35482.herokuapp.com/item/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -18,6 +19,7 @@ const ManageItems = () => {
                     console.log(data);
                     const remaining = items.filter(item => item._id !== id);
                     setItems(remaining);
+                    toast("Item Deleted");
                 })
 
 
@@ -25,7 +27,10 @@ const ManageItems = () => {
     }
     return (
         <div>
-            <h2>Hello Boss</h2>
+            <h2 className='m-3'>Inventory</h2>
+            <Link className=" bg-success  text-white  text-decoration-none py-2 px-3 mt-3 border" to="/additem">
+                Add Item
+            </Link>
             {/* {
                 items.map(item =>
                     <div
@@ -33,13 +38,13 @@ const ManageItems = () => {
                         <h4>{item.name}</h4>
                     </div >
                 )} */}
-            <Table responsive bordered hover>
+            <Table responsive bordered hover className='mt-5'>
                 <thead>
                     <tr>
                         <th>Name </th>
                         <th>Price </th>
                         <th>Quantity </th>
-                        <th>Supplier </th>
+                        <th>Seller </th>
                         <th>Action </th>
                     </tr>
                 </thead>
@@ -49,11 +54,11 @@ const ManageItems = () => {
                             <th>{item.name}</th>
                             <td>{item.price} Tk</td>
                             <td>{item.quantity === 0 ? <p className="text-danger">Sold Out</p> : item.quantity}</td>
-                            <td>{item.supplier}</td>
+                            <td>{item.seller}</td>
                             <td>
                                 <div className='d-flex px-3'>
                                     <button>
-                                        <Link className="text-decoration-none text-black py-2 px-3 hover" to={`/ inventory / ${item._id}`}>
+                                        <Link className="text-decoration-none text-black py-2 px-3 hover" to={`/ inventory/:${item._id}`} >
                                             Update Item
                                         </Link></button>
                                     <br />

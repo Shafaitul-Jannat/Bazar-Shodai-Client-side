@@ -1,39 +1,37 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
-import useSingleInventory from "../Hooks/useSingleInventory";
 import { toast } from "react-toastify";
+import useSingleInventory from '../Hooks/useSingleInventory';
+
 
 const SingleItemInventory = () => {
 
     const { inventoryId } = useParams();
-    const [item, setItem] = useSingleInventory(inventoryId);
+    const [item, setItems] = useSingleInventory(inventoryId);
+
+
     const [item_Quantity, setItem_Quantity] = useState();
     useEffect(() => {
         const getItem = async () => {
-            const { data } = await axios.get(`http://localhost:5000/item/${inventoryId}`, {
+            const { data } = await axios.get(`https://shrouded-dusk-35482.herokuapp.com/item/${inventoryId}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 },
             });
 
-            setItem(data);
+
+            setItems(data);
             setItem_Quantity(data.quantity);
         };
         getItem();
     }, []);
 
-    let itemName = item?.name;
-    let itemPrice = item?.price;
-    let itemQuantity = item?.quantity;
-    let itemDescription = item?.description;
-    let itemSupplier = item?.supplier;
 
 
     const updateItem = (item) => {
         const setItem = async () => {
-            const { data } = await axios.post(`http://localhost:5000/additem`, item, {
+            const { data } = await axios.post(`https://shrouded-dusk-35482.herokuapp.com/additem`, item, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 },
@@ -50,25 +48,26 @@ const SingleItemInventory = () => {
     const quantityUpdate = (updatedQuantity) => {
         const { quantity, ...rest } = item;
         const newItem = { quantity: updatedQuantity, ...rest };
-        setItem(newItem);
+        setItems(newItem);
     };
-    const stockRef = useRef();
+    const Ref = useRef();
 
     const handleSubmitStock = (event) => {
         event.preventDefault();
-        const totalQuantity = parseInt(itemQuantity) + parseInt(event.target.stock.value);
-        const formItem = {
+        const totalQuantity = parseInt(item?.quantity) + parseInt(event.target.stock.value);
+        const makeItem = {
             name:
-                item?.name, price: itemPrice, quantity: totalQuantity, description: itemDescription
+                item?.name, price: item?.price, quantity: totalQuantity, description: item?.description
         };
         quantityUpdate(totalQuantity);
-        updateItem(formItem);
+        updateItem(makeItem);
     };
     const handleReduceStock = () => {
-        const totalQuantity = parseInt(itemQuantity) - 1;
-        const formItem = { name: itemName, price: itemPrice, quantity: totalQuantity, description: itemDescription };
+        const totalQuantity = parseInt(item?.quantity) - 1;
+        const makeItem = { name: item?.name, price: item?.price, quantity: totalQuantity, description: item?.description };
         quantityUpdate(totalQuantity);
-        updateItem(formItem);
+        updateItem(makeItem);
+        console.log(totalQuantity);
     };
 
     return (
@@ -89,10 +88,10 @@ const SingleItemInventory = () => {
                         {item?.description}
                     </div>
                     <br />
-                    {itemQuantity <= 0 ? (
+                    {item?.quantity <= 0 ? (
                         ""
                     ) : (
-                        <button onClick={handleReduceStock} className=" btn btn-primary  py-2 px-6 border">
+                        <button onClick={handleReduceStock} className="  bg-success  text-white fw-bold border px-3 py-3 mt-3 cursor-pointer">
                             Delivered
                         </button>
                     )}
@@ -102,14 +101,14 @@ const SingleItemInventory = () => {
 
             <div>
 
-                < div className="container pb-5 mt-5" >
+                < div className="container  mt-5 w-50 mb-5" >
                     <div className="border p-8 mx-auto  mt-12 mb-5">
-                        <h1 className="text-3xl font-medium text-center mb-3">Restock Item</h1>
-                        <form onSubmit={handleSubmitStock} className="space-y-4">
-                            <input className="border py-1 px-3 w-full" ref={stockRef} name="stock" type="number" placeholder="Add Stock Quantity" required />
+                        <h1 className=" font-medium text-center mb-3 mt-3">Restock Item</h1>
+                        <make onSubmit={handleSubmitStock} className="p-3">
+                            <input className="border  w-100 py-3 p-3 " ref={Ref} name="stock" type="number" placeholder="Add Stock Quantity" required />
                             <br />
-                            <input className="border px-7 py-2 bg-[#dfa761] hover:bg-[#c68f4b] cursor-pointer" type="submit" value="Add to stock" />
-                        </form>
+                            <input className="bg-success  text-white fw-bold border px-3 py-3 mt-3 cursor-pointer" type="submit" value="Add to stock" />
+                        </make>
                     </div>
                 </div >
             </div >

@@ -11,6 +11,10 @@ import RequireAuth from './Page/LoginPage/RequireAuth/RequireAuth';
 import SingleItemInventory from './Page/SingleItemInventory/SingleItemInventory';
 import AddItem from './Page/AddItem/AddItem';
 import ManageItems from './Page/ManageItems/ManageItems';
+import Blog from './Page/Blog/Blog';
+import Footer from './Page/Shared/Footer/Footer';
+import NotFound from './Page/NotFound/NotFound';
+import MyItem from './Page/MyItem/MyItem';
 
 
 function App() {
@@ -35,11 +39,21 @@ function App() {
             <ManageItems></ManageItems>
           </RequireAuth>}>
         </Route>
+        <Route
+          path="/myitems"
+          element={
+            <RequireAuth>
+              <MyItem></MyItem>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register
         ></Register>}></Route>
-
+        <Route path="/blog" element={<Blog></Blog>} />
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes >
+      <Footer></Footer>
     </div >
   );
 }

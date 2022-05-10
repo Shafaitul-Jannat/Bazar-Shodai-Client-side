@@ -1,18 +1,18 @@
-import axios from "axios";
-import { getAuth, signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import app from "../../firebase.init";
 
-
-const auth = getAuth(app);
+import axios from 'axios';
+import { signOut } from 'firebase/auth';
+import React, { useEffect, useState } from 'react';
+import { Table } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const MyItem = () => {
     const [user] = useAuthState(auth);
 
     let [items, setItems] = useState([]);
+
     useEffect(() => {
         const getItems = async () => {
             try {
@@ -31,8 +31,9 @@ const MyItem = () => {
         };
         getItems();
     }, []);
+
     const handleDelete = (_id) => {
-        const confirmation = window.confirm("Are you sure, you want to delete this items?");
+        const proceed = window.confirm("Are you sure, you want to delete this items?");
         const deleteItem = async () => {
             try {
                 const { data } = await axios.delete(`https://shrouded-dusk-35482.herokuapp.com/item/${_id}`, {
@@ -40,29 +41,34 @@ const MyItem = () => {
                         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                     },
                 });
-            } catch (error) {
+            }
+            catch (error) {
                 if (error.response.status === 403) {
                     toast.error("Access denied. You are logged out");
                     signOut(auth);
                 }
             }
+
         };
-        if (confirmation) {
+        if (proceed) {
             deleteItem();
             const newItems = items.filter((items) => items._id !== _id);
             setItems(newItems);
             toast("items Deleted");
         }
     };
+
+
+
     return (
         <div className="container py-16">
             <div className="lg:flex lg:justify-between items-center">
                 <h1 className="text-4xl py-3">My Items</h1>{" "}
-                <Link className="inline-block py-2 px-6 border" to="/add-item">
+                <Link className=" bg-success  text-white  text-decoration-none py-2 px-3 mt-3 border" to="/additem">
                     Add Item
                 </Link>
             </div>
-            <table border="1" width="100%" className="mt-5">
+            <Table responsive bordered hover className='mt-5'>
                 <thead>
                     <tr>
                         <th>Name </th>
@@ -75,11 +81,11 @@ const MyItem = () => {
 
                 <tbody>
                     {items?.map((item) => (
-                        <tr key={item._id} className="space-y-3">
-                            <th>{item.name}</th>
-                            <td>{item.price} Tk</td>
-                            <td>{item.quantity === 0 ? <p className="text-rose-500">Sold Out</p> : item.quantity}</td>
-                            <td>{item.supplier}</td>
+                        <tr key={item?._id} className="space-y-3">
+                            <th>{item?.name}</th>
+                            <td>{item?.price} Tk</td>
+                            <td>{item?.quantity === 0 ? <p className="">Sold Out</p> : item?.quantity}</td>
+                            <td>{item?.seller}</td>
                             <td>
                                 <Link className="inline-block py-2 px-6 border" to={`/inventory/${item._id}`}>
                                     Update Item
@@ -96,7 +102,7 @@ const MyItem = () => {
                         </tr>
                     ))}
                 </tbody>
-            </table>
+            </Table>
         </div>
     );
 };

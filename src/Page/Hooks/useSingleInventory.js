@@ -6,7 +6,7 @@ const useSingleInventory = inventoryId => {
     const [items, setItems] = useState({});
 
     useEffect(() => {
-        const url = `http://localhost:5000/item/${inventoryId}`;
+        const url = `https://shrouded-dusk-35482.herokuapp.com/item/${inventoryId}`;
         console.log(url);
         fetch(url)
             .then(res => res.json())

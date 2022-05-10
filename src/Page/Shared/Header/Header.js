@@ -5,6 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import logo from '../../../Images/logo.png'
+import './Header.css';
 
 
 const Header = () => {
@@ -22,22 +23,29 @@ const Header = () => {
                 <Container >
                     <Navbar.Brand href="#home">
                         <Navbar.Brand as={Link} to="/">
-                            <img height={120} src={logo} alt="" />
+                            <img
+                                src={logo}
+                                width="100"
+                                height="100"
+                                className="img-nav d-inline-block align-top"
+                                alt=''
+                            />
                         </Navbar.Brand>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/home">Home</Nav.Link>
-                            <Nav.Link href="home#inventory">Inventory</Nav.Link>
+                            <Nav.Link href="/manage">Inventory</Nav.Link>
 
                             {
                                 user && <>
                                     <Nav.Link as={Link} to="additem">Add Item</Nav.Link>
                                     <Nav.Link as={Link} to="manage">Manage Item</Nav.Link>
+                                    <Nav.Link as={Link} to="myitems">My Items</Nav.Link>
                                 </>
                             }
-                            <Nav.Link as={Link} to="about">About</Nav.Link>
+
 
                             <Nav.Link as={Link} to="blog">Blog</Nav.Link>
 
