@@ -1,6 +1,6 @@
 # Project Name: Bazar-Shodai-Warehouse
 
- This a full stack project about a website layout of a warehouse. This project has been made using HTML, React.js,React route, CSS, Bootstrap, firebase and mongodb.
+ <sub>This a full stack project about a website layout of a warehouse. This project has been made using HTML, React.js,React route, CSS, Bootstrap, firebase and mongodb.</sub>
  Here is the live deployed link of this website: https://bazar-shodai-warehouse.web.app
  Live API server link: https://shrouded-dusk-35482.herokuapp.com
  Mongodb API server back-end code link: https://github.com/Shafaitul-Jannat/Bazar-Shodai-Server-side
